@@ -1,0 +1,42 @@
+---
+const experience = [
+  {
+    period: '2024 — Present',
+    role: 'Software Engineer',
+    place: 'Company Name',
+    description: 'Describe what you did, the impact you made, and the technologies you used.',
+  },
+  {
+    period: '2022 — 2024',
+    role: 'Junior Developer',
+    place: 'Company Name',
+    description: 'Describe what you did, the impact you made, and the technologies you used.',
+  },
+  {
+    period: '2018 — 2022',
+    role: 'B.Sc. Computer Science',
+    place: 'University Name',
+    description: 'Describe your degree, coursework, and any notable achievements.',
+  },
+];
+---
+
+<section id="experience" class="mx-auto max-w-3xl px-6 pb-20">
+  <div class="border-line mb-8 flex items-baseline justify-between border-b pb-3">
+    <h2 class="text-ink-soft font-mono text-xs tracking-[0.2em] uppercase">Experience</h2>
+  </div>
+
+  <div class="relative border-line ml-3 border-l">
+    {
+      experience.map((item) => (
+        <div class="relative mb-10 pl-8 last:mb-0">
+          <span class="bg-signal absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full" aria-hidden="true" />
+          <p class="text-ink-soft font-mono text-xs">{item.period}</p>
+          <h3 class="font-display text-ink mt-1 text-lg font-medium">{item.role}</h3>
+          <p class="text-ink-soft text-sm">{item.place}</p>
+          <p class="text-ink-soft mt-2 text-sm">{item.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

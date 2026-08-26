@@ -5,6 +5,7 @@ import Button from '@/components/Button.astro';
 import WorkRow from '@/components/WorkRow.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import Skills from '@/components/Skills.astro';
+import Experience from '@/components/Experience.astro';
 import { SITE } from '@/site.config';
 
 const allWork = await getCollection('work', ({ data }) => !data.draft);
@@ -65,6 +66,8 @@ const selected = [...featured, ...rest].slice(0, 5);
       More about how I work →
     </a>
   </section>
+
+  <Experience />
 
   <section id="contact" class="mx-auto max-w-3xl px-6 pb-24">
     <SectionHeading eyebrow="Let's talk" />
