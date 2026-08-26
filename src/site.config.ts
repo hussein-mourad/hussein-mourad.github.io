@@ -4,7 +4,7 @@ export const SITE = {
   email: 'husseinmouradk@gmail.com',
   tagline: 'I build things for the web.',
   description:
-    'Fullstack software engineer building scalable web applications with React, TypeScript, and Docker.',
+    'Fullstack software engineer building scalable web applications with React, TypeScript, NestJS, FastAPI, and Docker. Open to new opportunities.',
   status: 'Open to new opportunities',
   social: [
     { label: 'GitHub', href: 'https://github.com/hussein-mourad' },
