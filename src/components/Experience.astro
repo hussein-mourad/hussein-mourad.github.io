@@ -1,0 +1,36 @@
+---
+const timeline = [
+  {
+    period: "2024 — Present",
+    role: "Software Engineer",
+    place: "Company Name",
+    description: "Describe what you did, the impact you made, and the technologies you used.",
+  },
+  {
+    period: "2022 — 2024",
+    role: "Junior Developer",
+    place: "Company Name",
+    description: "Describe what you did, the impact you made, and the technologies you used.",
+  },
+  {
+    period: "2018 — 2022",
+    role: "B.Sc. Computer Science",
+    place: "University Name",
+    description: "Describe your degree, coursework, and any notable achievements.",
+  },
+];
+---
+
+<section id="experience" class="section">
+  <h2 class="section__title">Experience</h2>
+  <ol class="timeline">
+    {timeline.map((item) => (
+      <li class="timeline__item">
+        <span class="timeline__period">{item.period}</span>
+        <h3 class="timeline__role">{item.role}</h3>
+        <p class="timeline__place">{item.place}</p>
+        <p class="timeline__desc">{item.description}</p>
+      </li>
+    ))}
+  </ol>
+</section>
