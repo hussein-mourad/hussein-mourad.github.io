@@ -44,11 +44,14 @@ const experience = [
     <h2 class="text-ink-soft font-mono text-xs tracking-[0.2em] uppercase">Experience</h2>
   </div>
 
-  <div class="relative border-line ml-3 border-l">
+  <div class="border-line relative ml-3 border-l">
     {
       experience.map((item) => (
         <div class="relative mb-10 pl-8 last:mb-0">
-          <span class="bg-signal absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full" aria-hidden="true" />
+          <span
+            class="bg-signal absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full"
+            aria-hidden="true"
+          />
           <p class="text-ink-soft font-mono text-xs">{item.period}</p>
           <h3 class="font-display text-ink mt-1 text-lg font-medium">{item.role}</h3>
           <p class="text-ink-soft text-sm">{item.place}</p>
