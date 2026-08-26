@@ -1,17 +1,35 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+/* Make the `dark:` variant respond to a `.dark` class instead of OS
+   preference, so the toggle in <ThemeToggle /> can override the system. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ---------------------------------------------------------------------
+   Design tokens (light values). Edit these colors to re-skin the entire
+   site — every component reads from the tokens below, nothing hardcodes
+   a hex value. The `.dark` block below overrides these for dark mode.
+   --------------------------------------------------------------------- */
 :root {
+  color-scheme: light;
+
+  --paper: #f7f6f3; /* page background */
+  --ink: #15161b; /* primary text */
+  --ink-soft: #5b5d66; /* secondary text */
+  --signal: #2dd4bf; /* the one accent color (teal) */
+  --line: #e4e2dc; /* borders, rules */
+  --surface: #efeeea; /* cards, raised panels */
+}
+
+.dark {
   color-scheme: dark;
 
-  --paper: #0b0f14;
-  --ink: #f2f1ed;
-  --ink-soft: #9a9ca6;
-  --signal: #2dd4bf;
-  --line: #26272c;
-  --surface: #1a1b20;
+  --paper: #0b0f14; /* page background */
+  --ink: #f2f1ed; /* primary text */
+  --ink-soft: #9a9ca6; /* secondary text */
+  --signal: #2dd4bf; /* accent color (teal, same as light) */
+  --line: #26272c; /* borders, rules */
+  --surface: #1a1b20; /* cards, raised panels */
 }
 
 /* `inline` keeps these resolving against the live --paper/--ink/etc custom
@@ -55,6 +73,7 @@
     outline-offset: 3px;
   }
 
+  /* Smooth background/color transitions when toggling themes */
   @media (prefers-reduced-motion: no-preference) {
     body {
       transition:
@@ -63,6 +82,7 @@
     }
   }
 
+  /* Disable view-transition animations for users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-group(*),
     ::view-transition-old(*),
