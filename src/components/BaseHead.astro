@@ -65,9 +65,6 @@ const socialImage = new URL(image || '/og-image.png', Astro.site);
 
 {/* Theme Toggle Script */}
 <script is:inline>
-    // Runs before first paint to avoid a flash of the wrong theme.
-    // Kept in sync by ThemeToggle.astro and re-applied after every
-    // view-transition navigation below.
     (function () {
     const stored = localStorage.getItem('theme');
     const theme =
