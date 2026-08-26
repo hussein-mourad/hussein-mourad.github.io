@@ -1,0 +1,39 @@
+---
+const skills = [
+  {
+    category: 'Frontend',
+    items: ['TypeScript', 'React', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+  },
+  {
+    category: 'Backend',
+    items: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs'],
+  },
+  {
+    category: 'Tools',
+    items: ['Git', 'Docker', 'Linux', 'CI/CD', 'VS Code'],
+  },
+];
+---
+
+<section id="skills" class="mx-auto max-w-3xl px-6 pb-20">
+  <div class="border-line mb-8 flex items-baseline justify-between border-b pb-3">
+    <h2 class="text-ink-soft font-mono text-xs tracking-[0.2em] uppercase">Skills</h2>
+  </div>
+
+  <div class="grid gap-8 sm:grid-cols-3">
+    {
+      skills.map((group) => (
+        <div>
+          <h3 class="font-display text-ink mb-3 text-sm font-medium">{group.category}</h3>
+          <ul class="flex flex-wrap gap-2">
+            {group.items.map((skill) => (
+              <li class="border-line text-ink-soft rounded-full border px-3 py-1 font-mono text-xs">
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
