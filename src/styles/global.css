@@ -1,367 +1,112 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Make the `dark:` variant respond to a `.dark` class instead of OS
+   preference, so the toggle in <ThemeToggle /> can override the system. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------
+   Design tokens (light values). Edit these five colors to re-skin the
+   entire site — every component reads from the tokens below, nothing
+   hardcodes a hex value.
+   --------------------------------------------------------------------- */
 :root {
-  --bg: #0b0f14;
-  --bg-alt: #121a22;
-  --surface: #16202a;
-  --border: #223140;
-  --text: #dce6f0;
-  --text-muted: #8fa3b5;
-  --accent: #2dd4bf;
-  --accent-soft: rgba(45, 212, 191, 0.14);
-  --radius: 12px;
-  --max-w: 960px;
+  color-scheme: light;
+
+  --paper: #f7f6f3; /* page background */
+  --ink: #15161b; /* primary text */
+  --ink-soft: #5b5d66; /* secondary text */
+  --signal: #3d3dff; /* the one accent color */
+  --line: #e4e2dc; /* borders, rules */
+  --surface: #efeeea; /* cards, raised panels */
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.dark {
+  color-scheme: dark;
+
+  --paper: #101114;
+  --ink: #f2f1ed;
+  --ink-soft: #9a9ca6;
+  --signal: #7b7bff;
+  --line: #26272c;
+  --surface: #1a1b20;
 }
 
-html {
-  scroll-behavior: smooth;
+/* `inline` keeps these resolving against the live --paper/--ink/etc custom
+   properties above at runtime, instead of Tailwind inlining a static value
+   at build time — required for the .dark class swap to work. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-signal: var(--signal);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+
+  /* Astro's Fonts API exposes the loaded families on --ff-* (see
+     astro.config.mjs). These map them to font-display / font-body /
+     font-mono utility classes. */
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+  --font-mono: var(--ff-mono);
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Navigation */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: rgba(11, 15, 20, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav__logo {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.nav__links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav__links a {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.nav__links a:hover {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.nav__toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.nav__toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.nav__toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.nav__toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-
-.nav__toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Layout */
-main {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section {
-  padding: 4rem 0;
-}
-
-.section__title {
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-
-.section__title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 48px;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
-}
-
-/* Hero */
-.hero {
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6rem 0 3rem;
-}
-
-.hero__eyebrow {
-  color: var(--accent);
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero__name {
-  font-size: clamp(2.6rem, 7vw, 4.2rem);
-  line-height: 1.1;
-  letter-spacing: -1px;
-}
-
-.hero__tagline {
-  font-size: clamp(1.4rem, 4vw, 2.2rem);
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-}
-
-.hero__blurb {
-  max-width: 54ch;
-  color: var(--text-muted);
-  margin: 1.2rem 0 2rem;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
-  background: var(--accent);
-  color: #0b0f14;
-  font-weight: 600;
-  border: 1px solid transparent;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--accent-soft);
-  text-decoration: none;
-}
-
-.btn--ghost {
-  background: transparent;
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.btn--ghost:hover {
-  background: var(--accent-soft);
-}
-
-/* Cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.25rem;
-}
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.card__title {
-  font-size: 1.15rem;
-}
-
-.card__desc {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  flex: 1;
-}
-
-.card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.card__tags span {
-  font-size: 0.75rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-}
-
-.card__links {
-  display: flex;
-  gap: 1rem;
-  font-size: 0.9rem;
-}
-
-/* Skills */
-.skills {
-  display: grid;
-  gap: 1.25rem;
-  max-width: 640px;
-}
-
-.skill__name {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-weight: 500;
-}
-
-.skill__bar {
-  height: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.skill__fill {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), #7dd3fc);
-  border-radius: 999px;
-}
-
-/* Timeline */
-.timeline {
-  list-style: none;
-  border-left: 2px solid var(--border);
-  padding-left: 1.5rem;
-  display: grid;
-  gap: 2rem;
-}
-
-.timeline__period {
-  display: inline-block;
-  font-size: 0.8rem;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 0.15rem 0.6rem;
-  border-radius: 999px;
-  margin-bottom: 0.35rem;
-}
-
-.timeline__role {
-  font-size: 1.1rem;
-}
-
-.timeline__place {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.timeline__desc {
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-}
-
-/* Contact */
-.contact__blurb {
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-}
-
-.contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-/* Footer */
-.footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  .nav {
-    flex-wrap: wrap;
+@layer base {
+  * {
+    border-color: var(--color-line);
   }
 
-  .nav__toggle {
-    display: flex;
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
   }
 
-  .nav__links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem;
-    padding: 1rem 0;
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-paper);
   }
 
-  .nav__links.is-open {
-    display: flex;
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
   }
 
-  main {
-    padding: 0 1.25rem;
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      transition:
+        background-color 200ms ease,
+        color 200ms ease;
+    }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+      animation: none !important;
+    }
+  }
+}
+
+/* Tune @tailwindcss/typography to use the site's tokens instead of its
+   default gray scale, so rendered Markdown matches the rest of the page. */
+.prose {
+  --tw-prose-body: var(--color-ink-soft);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-links: var(--color-signal);
+  --tw-prose-bullets: var(--color-signal);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-signal);
+  --tw-prose-code: var(--color-ink);
+}
+.prose :where(h2, h3, h4) {
+  font-family: var(--font-display);
+}
+.prose :where(a) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
