@@ -1,22 +1,40 @@
 ---
 const experience = [
   {
-    period: '2024 — Present',
+    period: 'Jan 2025 — Apr 2025',
+    role: 'Fullstack Developer',
+    place: 'Interaktiv · Remote',
+    highlights: [
+      'Built a Chrome extension for PDF document processing and analysis',
+      'Designed and implemented scalable REST APIs using NestJS',
+      'Integrated Amazon S3 for secure file storage',
+      'Implemented real-time communication using Socket.IO',
+      'Built asynchronous background jobs using BullMQ',
+      'Containerized applications with Docker and deployed on AWS EC2',
+      'Monitored infrastructure using Prometheus and Grafana',
+      'Optimized FastAPI AI inference service for improved performance',
+    ],
+  },
+  {
+    period: 'Oct 2021 — Oct 2023',
     role: 'Software Engineer',
-    place: 'Company Name',
-    description: 'Describe what you did, the impact you made, and the technologies you used.',
+    place: 'MIA Robotics · Alexandria, Egypt',
+    highlights: [
+      'Developed software for autonomous robotic systems',
+      'Configured and maintained Raspberry Pi devices for robot control',
+      'Trained YOLO-based computer vision models for object detection',
+      'Developed ROS-based applications for sensor and robotic component communication',
+    ],
   },
   {
-    period: '2022 — 2024',
-    role: 'Junior Developer',
-    place: 'Company Name',
-    description: 'Describe what you did, the impact you made, and the technologies you used.',
-  },
-  {
-    period: '2018 — 2022',
-    role: 'B.Sc. Computer Science',
-    place: 'University Name',
-    description: 'Describe your degree, coursework, and any notable achievements.',
+    period: '2019 — 2024',
+    role: 'B.Eng. Computer & Communication',
+    place: 'Faculty of Engineering, Alexandria University',
+    highlights: [
+      'Object-Oriented Programming, Algorithms & Data Structures',
+      'Computer Architecture, Operating Systems, Database Systems',
+      'Computer Security, Distributed Systems',
+    ],
   },
 ];
 ---
@@ -34,7 +52,11 @@ const experience = [
           <p class="text-ink-soft font-mono text-xs">{item.period}</p>
           <h3 class="font-display text-ink mt-1 text-lg font-medium">{item.role}</h3>
           <p class="text-ink-soft text-sm">{item.place}</p>
-          <p class="text-ink-soft mt-2 text-sm">{item.description}</p>
+          <ul class="text-ink-soft mt-2 list-disc space-y-1 pl-4 text-sm">
+            {item.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
         </div>
       ))
     }

@@ -1,16 +1,28 @@
 ---
 const skills = [
   {
+    category: 'Languages',
+    items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'C/C++', 'SQL'],
+  },
+  {
     category: 'Frontend',
-    items: ['TypeScript', 'React', 'Astro', 'Tailwind CSS', 'HTML/CSS'],
+    items: ['React', 'Next.js', 'Tailwind CSS', 'Material UI', 'Shadcn UI'],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Python', 'PostgreSQL', 'REST APIs'],
+    items: ['NestJS', 'Express', 'FastAPI', 'Django', 'Flask', 'Node.js', 'Laravel'],
   },
   {
-    category: 'Tools',
-    items: ['Git', 'Docker', 'Linux', 'CI/CD', 'VS Code'],
+    category: 'Databases',
+    items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+  },
+  {
+    category: 'Cloud & DevOps',
+    items: ['Docker', 'AWS EC2', 'AWS S3', 'Git', 'GitHub Actions', 'Linux', 'Prometheus', 'Grafana'],
+  },
+  {
+    category: 'Other',
+    items: ['REST APIs', 'OAuth2', 'JWT', 'WebSockets', 'Drizzle ORM'],
   },
 ];
 ---
@@ -20,7 +32,7 @@ const skills = [
     <h2 class="text-ink-soft font-mono text-xs tracking-[0.2em] uppercase">Skills</h2>
   </div>
 
-  <div class="grid gap-8 sm:grid-cols-3">
+  <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
     {
       skills.map((group) => (
         <div>
