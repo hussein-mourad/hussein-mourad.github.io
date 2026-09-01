@@ -4,6 +4,7 @@ summary: A comprehensive toolkit designed to simplify AI model creation with a v
 role: Fullstack Developer
 date: 2024-06-30
 tags: [React, Django, AI/ML]
+cover: ./easy-ai-cover.jpg
 featured: true
 draft: false
 ---

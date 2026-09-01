@@ -4,6 +4,7 @@ summary: A full-stack note-taking application with drag-and-drop organization, O
 role: Fullstack Developer
 date: 2026-07-15
 tags: [React, Express, PostgreSQL, Drizzle ORM]
+cover: ./google-keep-clone-cover.jpg
 url: https://github.com/hussein-mourad/google-keep-clone
 repo: https://github.com/hussein-mourad/google-keep-clone
 featured: true
