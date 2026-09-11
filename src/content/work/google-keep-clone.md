@@ -5,7 +5,6 @@ role: Fullstack Developer
 date: 2026-07-15
 tags: [React, Express, PostgreSQL, Drizzle ORM]
 cover: ./google-keep-clone-cover.webp
-url: https://github.com/hussein-mourad/google-keep-clone
 repo: https://github.com/hussein-mourad/google-keep-clone
 featured: true
 draft: false
