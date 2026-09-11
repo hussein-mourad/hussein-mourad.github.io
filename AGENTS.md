@@ -1,7 +1,7 @@
 # AGENTS.md
 
 Personal portfolio for Hussein Mourad, published to GitHub Pages at
-https://hussein-mourad.github.io/
+https://hussein.win/
 
 ## Branching model
 
