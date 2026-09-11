@@ -74,7 +74,7 @@ Currently Pages serves `main` (Deploy from a branch). To go live with Astro:
 ## 6. Verification
 
 - `npm install`, `npm run build` (must succeed), `npm run dev` to eyeball.
-- Push `astro` → confirm Actions workflow deploys → `https://hussein-mourad.github.io/`
+- Push `astro` → confirm Actions workflow deploys → `https://hussein.win/`
   shows the new design.
 
 ## Out of scope
